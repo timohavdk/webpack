@@ -27,3 +27,45 @@
 ```
 
 ---
+
+### _3.Первое использование_
+
+Проект version_1
+
+Описание:
+
+В файле src/index.js подключена библиотека lodash*, этот файл собирается в базовой сборке webpack
+в файл dist/main.js
+
+*lodash предварительно установлена через npm
+
+---
+
+### _4.Конфигурация_
+
+Проект version_2
+
+Описание:
+
+Добавление файла webpack.config.js в проект и использование его как
+
+```cmd
+webpack --config webpack.config.js
+```
+
+Добавление скрипта npm для быстрого запуска сборки (production)
+
+```js
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1", 
+    "build": "webpack"
+},
+```
+
+Для дальнейшего использования в cmd
+
+```cmd
+npm run build
+```
+
+---
