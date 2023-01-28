@@ -58,7 +58,7 @@ webpack --config webpack.config.js
 ```js
 "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1", 
-    "build": "webpack"
+    "build": "webpack --config webpack.config.js"
 }
 ```
 
@@ -67,6 +67,9 @@ webpack --config webpack.config.js
 ```cmd
 npm run build
 ```
+
+Чтобы использовать framework и/или другие языки, необходимо установить его в 
+package.json и установить loader для него
 
 ---
 

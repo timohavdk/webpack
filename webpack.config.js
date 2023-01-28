@@ -1,12 +1,20 @@
 const path = require('path'); //Path - библиотека использующая системный модуль путей, для адресации к файлам
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
-    mode: 'production',
+    mode: 'development',
+    devServer: {
+        static: {
+            directory: path.resolve(__dirname, 'dist/')
+        },
+        compress: true,
+        port: 1234,
+        hot: true
+    },
     entry: {
-        firstApp: './src/first-app/index.js',
-        secondApp: './src/second-app/index.js',
+        app: './src/app/index.js',
     }, // Входная точка для сборки всего проекта (Файл, в котором собираются все модули проекта)
     output: {
         filename: '[name]/[name].js', // Выходной/итоговый файл проекта в зависимости от целей production/development
@@ -17,7 +25,12 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name]/[name].css'
         }),
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new HtmlWebpackPlugin({
+            title: "App",
+            filename: "index.html",
+            favicon: path.resolve(__dirname, 'src/images/dev-favicon.png')
+        })
     ],
     module: {
         rules: [
