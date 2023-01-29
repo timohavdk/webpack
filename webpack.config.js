@@ -14,7 +14,7 @@ module.exports = {
         hot: true
     },
     entry: {
-        app: './src/app/index.js',
+        app: './src/app/index.ts',
     }, // Входная точка для сборки всего проекта (Файл, в котором собираются все модули проекта)
     output: {
         filename: '[name]/[name].js', // Выходной/итоговый файл проекта в зависимости от целей production/development
@@ -34,6 +34,14 @@ module.exports = {
     ],
     module: {
         rules: [
+            {
+                test: /\.tsx?$/,
+                loader: 'ts-loader',
+                options: {
+                    appendTsSuffixTo: [/\.vue$/],
+                },
+                exclude: /node_modules/
+            },
             {
                 test: /\.vue$/,
                 use: 'vue-loader'
